@@ -19,19 +19,18 @@ fn main() {
         .expect("Failed to read line");
 
     let guess : u32 = match guess.trim().parse() {
-        ok(num) => num, //if utente mette in input un valore compreso in u32 guess = num
+        Ok(num) => num, //if utente mette in input un valore compreso in u32 guess = num
         Err(_) => continue, //if utente mette in input qualsiasi cosa fuori da u32 ignora quell'input
     };
 
        println!("You guessed:{}", guess);
-
-       println!("The secret number is {}", secret_number);
     
        match guess.cmp(&secret_number) {
            Ordering::Less => println!("Too low"),
            Ordering::Greater => println!("Too big"),
            Ordering::Equal => {
             println!("You won");
+            println!("The secret number was {}", secret_number);
             break;
            }
       } 
